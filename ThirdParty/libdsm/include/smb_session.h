@@ -85,10 +85,13 @@ void            smb_session_set_creds(smb_session *s, const char *domain,
  * @param ip The ip of the machine to connect to (in network byte order)
  * @param transport The type of transport used, it could be SMB_TRANSPORT_TCP
  * or SMB_TRANSPORT_NBT (Netbios over TCP, ie legacy)
+ * @param direct_port direct TCP connect port
+ * @param secondary_port secondary TCP connect port
  * @return 0 on success or a DSM error code in case of error
  */
 int             smb_session_connect(smb_session *s, const char *hostname,
-                                    uint32_t ip, int transport);
+                                    uint32_t ip, int transport,
+                                    uint16_t direct_port, uint16_t secondary_port);
 
 /**
  * @brief Authenticate on the remote host with the provided credentials

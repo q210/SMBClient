@@ -30,7 +30,14 @@
     self = [super init];
     if (self) {
         _type = type;
-        _host = ipAddressOrHostname;
+        NSArray *split = [ipAddressOrHostname componentsSeparatedByString:@":"];
+        if ([split count] == 2) {
+            _host = [split objectAtIndex:0];
+            _port = [[split objectAtIndex:1] integerValue];
+        } else {
+            _host = ipAddressOrHostname;
+            _port = 445;
+        }
         _netbiosName = name;
         _group = group;
     }

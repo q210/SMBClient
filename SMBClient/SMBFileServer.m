@@ -63,6 +63,7 @@
             
             const char *name = self.netbiosName.UTF8String;
             const char *host = self.host.UTF8String;
+            const uint16_t port = (uint16_t)self.port;
             const char *user = username.length > 0 ? username.UTF8String : " ";
             const char *pass = password.length > 0 ? password.UTF8String : " ";
             NSError *error = nil;
@@ -83,7 +84,7 @@
                     smb_session_set_creds(_smbSession, name, user, pass);
                     
                     // Connect to the host
-                    int result = smb_session_connect(_smbSession, name, addr.s_addr, SMB_TRANSPORT_TCP);
+                    int result = smb_session_connect(_smbSession, name, addr.s_addr, SMB_TRANSPORT_TCP, port, 139);
                     
                     if (result == 0) {
                         // Login

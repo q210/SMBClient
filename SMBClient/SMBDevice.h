@@ -41,6 +41,7 @@ typedef NS_OPTIONS(NSUInteger, SMBDeviceType) {
 @property (nonatomic, readonly) NSString *host;
 @property (nonatomic, readonly) NSString *netbiosName;
 @property (nonatomic, readonly) NSString *group;
+@property (nonatomic, readonly) NSUInteger port;
 
 - (instancetype)initWithType:(SMBDeviceType)type host:(NSString *)ipAddressOrHostname netbiosName:(NSString *)name group:(NSString *)group;
 
